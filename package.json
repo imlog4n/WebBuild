@@ -1,0 +1,27 @@
+{
+  "name": "webbuild",
+  "version": "0.0.1",
+  "description": "Build websites with ease",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imlog4n/WebBuild.git"
+  },
+  "keywords": [
+    "web",
+    "website",
+    "static",
+    "html",
+    "js",
+    "css"
+  ],
+  "author": "Logan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imlog4n/WebBuild/issues"
+  },
+  "homepage": "https://github.com/imlog4n/WebBuild#readme"
+}
