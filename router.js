@@ -1,8 +1,17 @@
 const http = require("http");
+const path = require("path");
+const fs = require("fs");
 const getCallbacks = {};
 const postCallbacks = {};
 const putCallbacks = {};
 const deleteCallbacks = {};
+
+function req(req) {
+    return {}
+}
+function res(res) {
+    return {}
+}
 
 function getCallback(requestPath, req, res) {
     const callback = getCallbacks[requestPath];
@@ -60,6 +69,10 @@ function Delete(requestPath, callback) {
     getCallbacks[requestPath] = callback;
 }
 
+function file(filename, dirname) {
+    return path.join(dirname || __dirname.split("/node_modules")[0], filename);
+}
+
 const server = http.createServer((req, res) => {
     if(req.method == "GET") {
         const err = getCallback(req.url, req, res);
@@ -95,6 +108,7 @@ module.exports = {
     post,
     put,
     delete: Delete,
+    file,
     listen: server.listen,
     server
 }

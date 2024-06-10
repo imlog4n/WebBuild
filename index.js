@@ -1,9 +1,8 @@
 const router = require("./router");
-const path = require("path");
 
 module.exports = {
     get: router.get,
-    getFile: router.getFile
+    file: router.file,
     post: router.post,
     put: router.put,
     delete: router.delete,
