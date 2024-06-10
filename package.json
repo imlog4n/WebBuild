@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/imlog4n/WebBuild/issues"
   },
-  "homepage": "https://github.com/imlog4n/WebBuild#readme"
+  "homepage": "https://github.com/imlog4n/WebBuild#readme",
+  "dependencies": {
+    "file-type": "^19.0.0"
+  }
 }

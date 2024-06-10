@@ -1,6 +1,7 @@
 const http = require("http");
 const path = require("path");
 const fs = require("fs");
+const fileType = require("file-type")
 const getCallbacks = {};
 const postCallbacks = {};
 const putCallbacks = {};
@@ -9,8 +10,16 @@ const deleteCallbacks = {};
 function req(req) {
     return {}
 }
-function res(res) {
-    return {}
+
+async function res(res) {
+    return {
+        send: res.end,
+        file: async (filePath) => {
+            const stream = fs.createReadStream(filePath);
+
+            return await fileType.fileTypeFromStream(stream);
+        }
+    }
 }
 
 function getCallback(requestPath, req, res) {
@@ -69,8 +78,8 @@ function Delete(requestPath, callback) {
     getCallbacks[requestPath] = callback;
 }
 
-function file(filename, dirname) {
-    return path.join(dirname || __dirname.split("/node_modules")[0], filename);
+function file(fileName, dirname) {
+    return path.join(dirname || __dirname.split("/node_modules")[0], fileName);
 }
 
 const server = http.createServer((req, res) => {
